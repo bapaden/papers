@@ -1,0 +1,105 @@
+%%% lecture notes class
+\documentclass{llncs}
+
+%%% basic packages %%%
+\usepackage[T1]{fontenc} 
+\usepackage{tgtermes}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{hyperref}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{xspace} 
+\usepackage{color}
+\usepackage{comment}
+
+%%% some custom stuff %%%
+\usepackage[noend]{algpseudocode}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\renewcommand\algorithmicthen{}
+\renewcommand\algorithmicdo{}
+\algrenewcommand\algorithmicindent{1.0em}
+\newenvironment{megaalgorithm}[1][htb]
+  {\renewcommand{\algorithmcfname}{MegaAlgorithm}
+   \begin{algorithm}[#1]
+  }{\end{algorithm}}
+
+%%% Words %%%
+\newcommand{\GLC}{\ensuremath{\mathrm{GLC}}\xspace}
+\newcommand{\PRM}{\ensuremath{\mathrm{PRM}}\xspace}
+\newcommand{\PRMs}{\ensuremath{\mathrm{PRM}^*}\xspace}
+\newcommand{\RRT}{\ensuremath{\mathrm{RRT}}\xspace}
+\newcommand{\RRTs}{\ensuremath{\mathrm{RRT}^*}\xspace}
+\newcommand{\SST}{\ensuremath{\mathrm{SST}}\xspace}
+\newcommand{\EST}{\ensuremath{\mathrm{EST}}\xspace}
+\newcommand{\NULL}{\ensuremath{\mathtt{NULL}}\xspace}
+
+\newcommand{\xfree}{\ensuremath{X_{\mathrm{free}}}\xspace}
+\newcommand{\xgoal}{\ensuremath{X_{\mathrm{goal}}}\xspace}
+\newcommand{\Xfree}{\ensuremath{\mathcal{X}_{\mathrm{free}}}\xspace}
+\newcommand{\Xgoal}{\ensuremath{\mathcal{X}_{\mathrm{goal}}}\xspace}
+\newcommand{\U}{\ensuremath{\mathcal{U}}\xspace}
+\newcommand{\X}{\ensuremath{\mathcal{X}}\xspace}
+\newcommand{\Ufree}{\ensuremath{\mathcal{U}_{\mathrm{free}}}\xspace}
+\newcommand{\Ugoal}{\ensuremath{\mathcal{U}_{\mathrm{goal}}}\xspace}
+\newcommand{\UR}{\ensuremath{\mathcal{U}_R}\xspace}
+\newcommand{\Xic}{\ensuremath{\mathcal{X}_{x_{ic}}}\xspace}
+\newcommand{\Xxo}{\ensuremath{\mathcal{X}_{x_{0}}}\xspace}
+
+\setlength{\marginparwidth}{1in}
+\newcommand{\efmargin}[2]{{\color{blue}#1}\marginpar{\raggedright\footnotesize\color{blue}[EF] #2}}
+% Uncomment the line below to remove efmargin notes
+%\renewcommand{\efmargin}[2]{{#1}}
+
+\begin{document}
+\title{Highly parallel real-time labeling of large transition systems}
+
+\author{Brian Paden, Peng Liu, and Schuyler Cullen}
+\institute{Advanced Technology Group, Samsung Smart Machines \\ 
+\email{brian.paden@samsung.com}, $\quad$ \email{peng.liu@samsung.com}}
+\maketitle
+\begin{abstract}
+%
+Temporal logic provides a 
+\end{abstract}
+%
+
+\section{Introduction}
+In the context of autonomous systems and robotics, linear temporal logic provides an expressive language for defining desired properties of an autonomous agent. 
+%
+LTL extends predicate logic with operators that allow constraints to be placed on the ordering of events. 
+%
+The techniques that have been developed for planning motions satisfying specifications given as LTL formulae are well suited to systems requiring guaranteed satisfaction of functional safety requirements and traceability of failures.
+%
+
+The most common approach to generating motion plans satisfying complex task specifications is to construct a finite state, discrete time transition system approximating the continuous state, continuous time physical system with transitions associated to a feasible motion between two configurations. 
+%
+Similarly, relevant features of an environment are abstracted from the scene as sets of logical predicates or atomic propositions labeling the transitions between discrete states of the transition system.
+%
+A path or trace through the transition system generates a string of predicates which may or may not satisfy the LTL formulae defining the desired behavior of the system.
+%
+Early work on ~\cite{fainekos2005temporal}... This was later ~\cite{kress2009temporal}. The probabilistic roadmap was the seminal work on the class of sampling based planners. LTL was applied to PRMs in ~\cite{plaku2012path}.
+
+
+While the logical precision of formal methods is attractive in task and motion planning applications, in practice, engineers must face the curse of dimensionality when constructing the required finite approx
+
+
+% Contrast with RL methods and some of the combined techniques
+In many of these techniques, systems with continuous state spaces evolving in continuous time must be approximated by finite state systems   
+
+\section{\label{sec:background}Combined Motion and Task Planning}
+\section{\label{sec:approach}Finite State and Discrete Time Approximations}
+\section{\label{sec:Approach}Real-time Labeling of Transition Systems}
+\section{\label{sec:experiments}Empirical Results}
+
+
+for their insightful comments. 
+\bibliographystyle{splncs}
+\bibliography{references}
+
+\end{document}

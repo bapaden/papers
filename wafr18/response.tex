@@ -1,0 +1,61 @@
+\documentclass{letter}
+\date{}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+
+\signature{Brian Paden}
+%\address{Street \\ City \\ Country}
+\begin{document}
+	\begin{letter}{}
+		\opening{Dear Program Committee,}
+		We would like to thank you and the reviewers for your constructive comments on our paper. We believe the revisions addressing reviewer feedback have improved the paper considerably. A one page summary of the most significant revisions is provided below:
+		
+		\emph{a) The reviewers were quite concerned regarding the
+		applicability of the method toward high dimensional problems, problems with many obstacles, and non-minimum time problems.}
+		
+		The examples section has been expanded to include problems of dimension two to six. Three of the five examples have obstacles resulting in narrow passages that should be sufficiently complex. The remaining two were left unchanged because they are popular examples appearing in many papers (including the last WAFR meeting). There is additionally, a non-minimum time example.
+		
+		\emph{b) The GLC-3 condition was viewed as conservative in general for the method to be broadly applicable.}
+		
+		What may have not been clear is that the threshold in this condition converges to zero with increasing resolution. This is now emphasized in the paper. The expanded examples section should give a sense of the applicability of the technique.
+		
+		\emph{b) Better support the applicability of their approach in robotic applications by including more extensive evaluation on more involved challenges, specifically higher-dimensional challenges and problems that include obstacles}
+		
+		The expanded examples section described above addresses this.
+		
+		\emph{c) Simplify the formalism whenever possible}
+		
+		We have replaced mathematical notation with plain English explanations wherever doing so would not compromise the rigor of the discussion. In particular, what were equations (10) and (12) have now replaced by a description. We also use the term "grid" now to describe the partition of the state space based on the comments of Reviewer 1.
+		
+		\emph{d) Providing more illustrative examples to explain the basic concepts in the paper}
+		
+		The use of an equivalence relation defined between control inputs is probably the most abstract concept in the paper. To clarify this concept we have revised the definition to be more intuitive, 
+		
+		"For $u_1,u_2 \in \mathcal{U}_R$ we write $u_{1}\overset{\mathcal{U}_R}{\sim}u_{2}$ if the resulting trajectories terminate in the same hypercube."
+		
+		This is also illustrated in Figure 1.
+		
+		\emph{e) Clarifying the key technical novelty and its importance for real-world application.}
+		
+		The last paragraph of the revised introduction addresses this.
+		
+		\emph{providing adequate coverage of the related literature (starting from early approaches like Barraquand and Latombe and describing the departure from them in the current paper)}
+		 
+		The literature review in the introduction has been reorganized and to expand the literature review a reference to a related method proposed by Thrun and Cremers is made. Although, the '91 paper by Barraquand and Latombe was a seminal work, it is too distant from our approach to warrant discussion. It is a potential descent based method. The only similarity is that a similar partitioning of the state space is used to construct and evaluate the potential function. Further this technique doesn't address differential constraints or optimality of the solution which is the focus of this work.   
+		
+		\emph{f) Give enough details of the most closely related approach and comparison point (SST) so that the reader can better identify what is different in the proposed method relative to it.}
+		
+		A more detailed comparison with SST can now be found in the last two paragraphs of the introduction.
+		 
+		\closing{Regards,}
+		\vspace{-1in}
+	\end{letter}
+\end{document}

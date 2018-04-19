@@ -1,0 +1,203 @@
+%%% lecture notes class
+\documentclass{llncs}
+
+%%% basic packages %%%
+\usepackage[T1]{fontenc} 
+\usepackage{tgtermes}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{hyperref}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{xspace} 
+\usepackage{color}
+\usepackage{comment}
+
+%%% some custom stuff %%%
+\usepackage[noend]{algpseudocode}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\renewcommand\algorithmicthen{}
+\renewcommand\algorithmicdo{}
+\algrenewcommand\algorithmicindent{1.0em}
+\newenvironment{megaalgorithm}[1][htb]
+  {\renewcommand{\algorithmcfname}{MegaAlgorithm}
+   \begin{algorithm}[#1]
+  }{\end{algorithm}}
+
+%%% Words %%%
+\newcommand{\GLC}{\ensuremath{\mathrm{GLC}}\xspace}
+\newcommand{\PRM}{\ensuremath{\mathrm{PRM}}\xspace}
+\newcommand{\PRMs}{\ensuremath{\mathrm{PRM}^*}\xspace}
+\newcommand{\RRT}{\ensuremath{\mathrm{RRT}}\xspace}
+\newcommand{\RRTs}{\ensuremath{\mathrm{RRT}^*}\xspace}
+\newcommand{\SST}{\ensuremath{\mathrm{SST}}\xspace}
+\newcommand{\EST}{\ensuremath{\mathrm{EST}}\xspace}
+\newcommand{\NULL}{\ensuremath{\mathtt{NULL}}\xspace}
+
+\newcommand{\xfree}{\ensuremath{X_{\mathrm{free}}}\xspace}
+\newcommand{\xgoal}{\ensuremath{X_{\mathrm{goal}}}\xspace}
+\newcommand{\Xfree}{\ensuremath{\mathcal{X}_{\mathrm{free}}}\xspace}
+\newcommand{\Xgoal}{\ensuremath{\mathcal{X}_{\mathrm{goal}}}\xspace}
+\newcommand{\U}{\ensuremath{\mathcal{U}}\xspace}
+\newcommand{\X}{\ensuremath{\mathcal{X}}\xspace}
+\newcommand{\Ufree}{\ensuremath{\mathcal{U}_{\mathrm{free}}}\xspace}
+\newcommand{\Ugoal}{\ensuremath{\mathcal{U}_{\mathrm{goal}}}\xspace}
+\newcommand{\UR}{\ensuremath{\mathcal{U}_R}\xspace}
+\newcommand{\Xic}{\ensuremath{\mathcal{X}_{x_{ic}}}\xspace}
+\newcommand{\Xxo}{\ensuremath{\mathcal{X}_{x_{0}}}\xspace}
+
+\setlength{\marginparwidth}{1in}
+\newcommand{\efmargin}[2]{{\color{blue}#1}\marginpar{\raggedright\footnotesize\color{blue}[EF] #2}}
+% Uncomment the line below to remove efmargin notes
+%\renewcommand{\efmargin}[2]{{#1}}
+
+\begin{document}
+\title{Labeling finite abstractions of autonomous systems in real-time}
+
+\author{Brian Paden, Peng Liu, and Schuyler Cullen}
+\institute{Advanced Technology Group, Samsung Smart Machines \\ 
+\email{brian.paden@samsung.com}, $\quad$ \email{peng.liu@samsung.com}}
+\maketitle
+\begin{abstract}
+%
+Temporal logic provides a 
+\end{abstract}
+%
+
+\section{Introduction}
+In the context of autonomous systems and robotics, linear temporal logic provides an expressive language for defining desired properties of an autonomous agent. 
+%
+LTL extends predicate logic with operators that allow constraints to be placed on the ordering of events. 
+%
+The techniques that have been developed for planning motions satisfying specifications given as LTL formulae are well suited to systems requiring guaranteed satisfaction of functional safety requirements and traceability of failures.
+%
+
+The most common approach to generating motion plans satisfying complex task specifications is to construct a finite state, discrete time transition system approximating the continuous state, continuous time physical system with transitions associated to a feasible motion between two configurations. 
+%
+Similarly, relevant features of an environment are abstracted from the scene as sets of logical predicates or atomic propositions labeling the transitions between discrete states of the transition system.
+%
+A path or trace through the transition system generates a string of predicates which may or may not satisfy the LTL formulae defining the desired behavior of the system.
+%
+Early work on ~\cite{fainekos2005temporal}... This was later ~\cite{kress2009temporal}. The probabilistic roadmap was the seminal work on the class of sampling based planners. LTL was applied to PRMs in ~\cite{plaku2012path}.
+
+
+While the logical precision of formal methods is attractive in task and motion planning applications, in practice, engineers must face the curse of dimensionality when constructing the required finite approx
+
+
+% Contrast with RL methods and some of the combined techniques
+In many of these techniques, systems with continuous state spaces evolving in continuous time must be approximated by finite state systems   
+
+\section{\label{sec:background}Receding Horizon Planning Formulation}
+The mobility of an autonomous agent is well modeled by a controlled dynamical system with $x(t)\in \mathbb{R}^n$ and $u(t)\in \mathbb{R}^m$ denoting the state and control respectively at time $t\in \mathbb{R}$.
+%
+Dynamic models derived from first principles typically take the form
+\begin{equation}\label{eq:dynamics}
+\frac{d}{dt}x(t)=f(x(t),u(t)),
+\end{equation}
+where $f$ is a Lipschitz continuous function from $\mathbb{R}^n\times \mathbb{R}^m$ into $\mathbb{R}^n$.
+%
+For each Lebesgue integrable input signal $u:[t_0,t_0+t_h]\rightarrow \mathbb{R}^m$, there is a unique trajectory $x:[t_0,t_0+t_h]\rightarrow \mathbb{R}^n$ satisfying \eqref{eq:dynamics} through a measured initial state $x(t_0)=x_0$.
+%
+
+
+
+Informally, receding horizon planning strategy generates a control signal $u$ over a finite time horizon which meets various specifications on the resulting motion through the present state $x_0$, and minimized a cost functional.
+
+
+
+A finite set of atomic propositions $\Pi$, rich enough to provide the task planning specification, are given as part of the problem data. 
+%
+For example, in the context of advanced driver assistance systems, these predicates might include terms such as $\texttt{DrivableSurface}$, $\texttt{LegalSurface}$, $\texttt{NominalLane}$, $\texttt{DashedWhiteLine}$, etc.
+%
+Each predicate represents a subset of the system's state space, specific to the planning scenario, where that predicate is interpreted as $\top$ at each point in that subset.
+%%
+These regions of the state space are usually defined implicitly by states where a physical object intersects a region of interest.
+%
+To make this more precise, we will consider the \emph{workspace}, as a region in $\mathbb{R}^k$, and assume that there is a map $F:X\rightarrow 2^W$ identifying the space in $W$ occupied by the autonomous agent for each system state in $X$.
+%
+Analogously, predicates in the state space are implicitly defined by states of the system $x$ such that $F(x)$ has nonempty intersection with a subset $S$ of $W$ occupying a region associated to a particular predicate.
+
+%The above could be referenced in the example section
+%In a particular planning scenario, the each predicate in $\Pi$ is interpreted with a value in $\{\top , \bot\}$ at each system state $x\in\mathbb{R}^n$.
+%
+Each state $x$ can then be labeled with an element of $\{\top,\bot\}^{|\Pi|}$ identifying the interpretation of each predicate at that particular state.
+%
+Strings of elements from $\{\top,\bot\}^{|\Pi|}$ will be used to form regular and $\omega$-regular languages in which the specifications of the system can be made.
+%
+The map $\mathcal{L}:\mathbb{R}^n\rightarrow \{\top,\bot\}^{|\Pi|}$ defining the interpretation of the predicates at each state is called the \emph{labeling function}. 
+%
+If $\lambda = \mathcal{L}(x)$ and $\lambda_i=\top$, then the $i^{th}$ predicate, with respect to an indexing convention, is considered true at state $x$. 
+%
+The finite duration $[t_0,t_0+t_h]$ of a trajectory $x$ over the planning horizon is partitioned into uniform intervals $[t_0,t_1]\cup[t_1,t_2]\cup ... \cup[t_{n-1},t_n]$, and segments of trajectory along each interval $t\in[t_i,t_{i+1}]$ are labeled with $\lambda\in\{\top,\bot\}^{|\Pi|}$ where $\lambda_j=\top$ if there exists $t\in[t_i,t_{i+1}]$ such that $\mathcal{L}(x(t))_j=\top$.
+%
+Using this labeling rule, each trajectory over a finite time horizon is associated with a finite string $w=w_0w_1w_2...w_n$ of subsets of $\Pi$ corresponding to the predicates intersected in each time interval.
+%
+This string will be viewed as a prefix to an infinite string or $\omega$-word over the subsets of $\Pi$.
+%
+This is illustrated in Figure ... 
+
+Since many task planning problems have moving areas of interest, the state of the system is augmented with the state $\tau\in \mathbb{R}$ which encodes the current time into the state.
+%
+The evolution of $\tau$ is simply,
+\begin{equation}
+\dot{\tau}=1,
+\end{equation}
+which augments the system dynamics in \eqref{eq:dynamics}.
+%
+A time-varying predicate in the original state $\mathbb{R}^n$ becomes a static object in the augmented state space $\mathbb{R}^{n+1}$ and trajectories generate words over $\{\top,\bot\}^{|\Pi|}$ as the state passes through dynamic predicates in the same way as  as for static scenarios. 
+%
+This is illustrated in Figure ...
+
+
+
+\subsection{Linear Temporal Logic as a Specification Language}
+Linear temporal logic (LTL) has become one of the predominant specification languages for motion and task planning for autonomous systems.
+%
+The syntax and semantics of LTL are described in this section for reference.
+%
+
+Linear temporal logic (LTL) which consists of the usual logical operators $\neg$ (not) and $\vee$ (or) together with the temporal operators $\mathcal{U}$ (until) and $\bigcirc$ (next).
+%
+The set of LTL formulae are defined recursively as follows:
+\begin{enumerate}
+	\item Each subset of $\Pi$ is a formula.
+	\item If $\phi$ is a formula, then $\neg\phi$ is a formula.
+	\item If $\phi_1$ and $\phi_2$ are formulae, then $\phi_1 \vee \phi_2$ is a formulae.
+	\item If $\phi_1$ and $\phi_2$ are formulae, then $\phi_1 \mathcal{U} \phi_2$ is a formulae.
+\end{enumerate}
+Let $w=w_0w_1w_2...$ be an $\omega$-regular word over $2^{\Pi}$. 
+%
+In the context of motion and task planning, each $w_i$ is a subset of $\Pi$ representing the atomic propositions which are true at time interval $i$.
+%
+
+The semantics of LTL define which words $w$ satisfy $\phi$, in which case we write the relation $w \models \phi$. 
+%
+A pair $(w,\phi)$ in the complement of the satisfaction relation is denoted $w\not\models\phi$.
+%
+The satisfaction relation for LTL is define recursively as follows:
+\begin{enumerate}
+	\item For $p\subset \Pi$,  $w\models p$ if $p \in w_0$.
+	\item $w\models \neg\phi$ if $w \not\models \phi$.
+	\item $w\models \phi_1 \vee \phi_2$ if $w\models\phi_1$ or $w\models\phi_2$.
+	\item $w\models \bigcirc\phi$ if $w_1w_2... \models \phi$.
+	\item $w\models \phi_1 \mathcal{U} \phi_2$ if there exists $i$ such that $w_iw_{i+1}...\models\phi_2$ and for each $j<i$, $w_jw_{j+1}...\models\phi_1$.
+\end{enumerate}
+
+Useful constructs derived from these operators are $\phi_1 \wedge \phi_2 \coloneqq \neg(\neg \phi_1 \vee \neg \phi_2)$. 
+%
+
+
+\section{\label{sec:approach}Finite State and Discrete Time Approximations}
+\section{\label{sec:Approach}Real-time Labeling of Transition Systems}
+\section{\label{sec:experiments}Empirical Results}
+
+
+\bibliographystyle{splncs}
+\bibliography{references}
+
+\end{document}

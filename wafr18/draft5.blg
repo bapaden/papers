@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: draft5.aux
+The style file: splncs.bst
+Database file #1: references.bib
+Warning--can't use both volume and number fields in bertsekas1995dynamic
+You've used 19 entries,
+            2087 wiz_defined-function locations,
+            602 strings with 6848 characters,
+and the built_in function-call counts, 6094 in all, are:
+= -- 646
+> -- 178
+< -- 16
++ -- 67
+- -- 48
+* -- 392
+:= -- 772
+add.period$ -- 29
+call.type$ -- 19
+change.case$ -- 15
+chr.to.int$ -- 0
+cite$ -- 20
+duplicate$ -- 329
+empty$ -- 592
+format.name$ -- 48
+if$ -- 1509
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 21
+newline$ -- 100
+num.names$ -- 19
+pop$ -- 79
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 239
+stack$ -- 0
+substring$ -- 440
+swap$ -- 179
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 58
+width$ -- 21
+write$ -- 221
+(There was 1 warning)

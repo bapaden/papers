@@ -1,0 +1,115 @@
+\begin{thebibliography}{10}
+
+\bibitem{PRM}
+Kavraki, L.E., Svestka, P., Latombe, J.C., Overmars, M.H.:
+\newblock {Probabilistic Roadmaps for Path Planning in High-Dimensional
+  Configuration Spaces}.
+\newblock {IEEE Transactions on Robotics and Automation} \textbf{12}(4) (1996)
+  566--580
+
+\bibitem{karaman2011sampling}
+Karaman, S., Frazzoli, E.:
+\newblock {Sampling-Based Algorithms for Optimal Motion Planning}.
+\newblock The International Journal of Robotics Research \textbf{30}(7) (2011)
+  846--894
+
+\bibitem{EST_Journal}
+Hsu, D., Kindel, R., Latombe, J.C., Rock, S.:
+\newblock Randomized kinodynamic motion planning with moving obstacles.
+\newblock The International Journal of Robotics Research \textbf{21}(3) (2002)
+  233--255
+
+\bibitem{RRT_Journal}
+LaValle, S.M., Kuffner, J.J.:
+\newblock Randomized kinodynamic planning.
+\newblock The International Journal of Robotics Research \textbf{20}(5) (2001)
+  378--400
+
+\bibitem{karaman2010optimal}
+Karaman, S., Frazzoli, E.:
+\newblock {Optimal Kinodynamic Motion Planning Using Incremental Sampling-Based
+  Methods}.
+\newblock In: IEEE Conference on Decision and Control. (2010)  7681--7687
+
+\bibitem{perez2012lqr}
+Perez, A., Platt~Jr, R., Konidaris, G., Kaelbling, L., Lozano-Perez, T.:
+\newblock {LQR-RRT*: Optimal Sampling-Based Motion Planning with Automatically
+  Derived Extension Heuristics}.
+\newblock In: International Conference on Robotics and Automation, IEEE (2012)
+  2537--2542
+
+\bibitem{xie2015toward}
+Xie, C., van~den Berg, J., Patil, S., Abbeel, P.:
+\newblock {Toward Asymptotically Optimal Motion Planning for Kinodynamic
+  Systems Using a Two-Point Boundary Value Problem Solver}.
+\newblock In: {International Conference on Robotics and Automation}, IEEE
+  (2015)  4187--4194
+
+\bibitem{Li2016Asymptotically-}
+Li, Y., Littlefield, Z., Bekris, K.E.:
+\newblock {Sparse Methods for Efficient Asymptotically Optimal Kinodynamic
+  Planning}.
+\newblock In: {Algorithmic Foundations of Robotics XI}.
+\newblock Springer (2015)  263--282
+
+\bibitem{dijkstra1959note}
+Dijkstra, E.W.:
+\newblock {A Note on Two Problems in Connexion with Graphs}.
+\newblock Numerische mathematik \textbf{1}(1) (1959)  269--271
+
+\bibitem{fox1998hybrid}
+Fox, D., Burgard, W., Thrun, S., Cremers, A.B.:
+\newblock A hybrid collision avoidance method for mobile robots.
+\newblock In: International Conference on Robotics and Automation. Volume~2.,
+  IEEE (1998)  1238--1243
+
+\bibitem{bertsekas1995dynamic}
+Bertsekas, D.P.:
+\newblock {Dynamic Programming and Optimal Control}. Volume~1.
+\newblock Athena Scientific Belmont, MA (1995)
+
+\bibitem{coddington1955theory}
+Coddington, E.A., Levinson, N.:
+\newblock {Theory of Ordinary Differential Equations}.
+\newblock {McGraw-Hill Education} (1955)
+
+\bibitem{hart1968formal}
+Hart, P.E., Nilsson, N.J., Raphael, B.:
+\newblock {A Formal Basis for the Heuristic Determination of Minimum Cost
+  Paths}.
+\newblock Systems Science and Cybernetics \textbf{4}(2) (1968)  100--107
+
+\bibitem{rrt_implementation}
+Karaman, S.:
+\newblock {RRT* Library}.
+\newblock \url{http://karaman.mit.edu/software.html}
+
+\bibitem{BBekris2015}
+Li, Y., Littlefield, Z., Bekris, K.E.:
+\newblock Sparse {RRT} package.
+\newblock \url{https://bitbucket.org/pracsys/sparse_rrt/} Accessed: Jan. 2016.
+
+\bibitem{spong1995swing}
+Spong, M.W.:
+\newblock {The Swing Up Control Problem for the Acrobot}.
+\newblock Control Systems, IEEE \textbf{15}(1) (1995)  49--55
+
+\bibitem{yershov2011sufficient}
+Yershov, D.S., LaValle, S.M.:
+\newblock {Sufficient Conditions for the Existence of Resolution Complete
+  Planning Algorithms}.
+\newblock In: Algorithmic Foundations of Robotics IX.
+\newblock Springer (2011)  303--320
+
+\bibitem{khalil1996nonlinear}
+Khalil, H.K., Grizzle, J.:
+\newblock {Nonlinear Systems}. Volume~3.
+\newblock Prentice hall New Jersey (1996)
+
+\bibitem{kolmogorov1961elements}
+Kolmogorov, A.N., Fomin, S.V.:
+\newblock {Elements of the Theory of Functions and Functional Analysis. Vol. 2,
+  Measure. The Lebesgue Integral. Hilbert Spaces}.
+\newblock Graylock Press (1961)
+
+\end{thebibliography}

@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{fainekos2005temporal}
+Fainekos, G.E., Kress-Gazit, H., Pappas, G.J.:
+\newblock Temporal logic motion planning for mobile robots.
+\newblock In: Robotics and Automation, 2005. ICRA 2005. Proceedings of the 2005
+  IEEE International Conference on, IEEE (2005)  2020--2025
+
+\bibitem{kress2009temporal}
+Kress-Gazit, H., Fainekos, G.E., Pappas, G.J.:
+\newblock Temporal-logic-based reactive mission and motion planning.
+\newblock IEEE transactions on robotics \textbf{25}(6) (2009)  1370--1381
+
+\bibitem{plaku2012path}
+Plaku, E.:
+\newblock Path planning with probabilistic roadmaps and co-safe linear temporal
+  logic.
+\newblock In: Intelligent Robots and Systems (IROS), 2012 IEEE/RSJ
+  International Conference on, IEEE (2012)  2269--2275
+
+\end{thebibliography}
