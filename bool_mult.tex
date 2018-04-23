@@ -187,13 +187,25 @@ The satisfaction relation for LTL is define recursively as follows:
 	\item $w\models \bigcirc\phi$ if $w_1w_2... \models \phi$.
 	\item $w\models \phi_1 \mathcal{U} \phi_2$ if there exists $i$ such that $w_iw_{i+1}...\models\phi_2$ and for each $j<i$, $w_jw_{j+1}...\models\phi_1$.
 \end{enumerate}
+%
+Useful constructs derived from these operators are the following: $\phi_1 \wedge \phi_2 \coloneqq \neg(\neg \phi_1 \vee \neg \phi_2)$, $\phi_1 \Rightarrow \phi_2 \coloneqq \neg \phi_1 \vee \phi_2$, $\phi_1 \Leftrightarrow \phi_2 \coloneqq \phi_1 \Rightarrow \phi_2 \wedge \phi_2 \Rightarrow \phi_1$, $\top \coloneqq \phi \wedge \neg \phi$, $\bot \coloneqq \neg \top$, $\lozenge \phi \coloneqq \top \mathcal{U} \phi$, and $\square \phi \coloneqq \neg \lozenge\neg \phi$.
+%
 
-Useful constructs derived from these operators are $\phi_1 \wedge \phi_2 \coloneqq \neg(\neg \phi_1 \vee \neg \phi_2)$. 
+\subsection{Buchi Automata and Runtime Monitors}
+
+
+The set of $\omega$-regular words that satisfy a formula $\phi$ forms an $\omega$-regular language, and each $\omega$-regular language can be represented as a Buchi automaton that accepts words satisfying $\phi$ and rejects them otherwise.
 %
 
 
 \section{\label{sec:approach}Finite State and Discrete Time Approximations}
+
+\subsection{Synchronous Product with Runtime-monitors}
 \section{\label{sec:Approach}Real-time Labeling of Transition Systems}
+\subsection{Partitioning the Workspace}
+\subsection{Indexing the partition}
+\subsection{GPU kernels for binary matrix vector multiplication}
+
 \section{\label{sec:experiments}Empirical Results}
 
 
