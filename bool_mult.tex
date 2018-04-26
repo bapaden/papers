@@ -191,10 +191,22 @@ The satisfaction relation for LTL is define recursively as follows:
 Useful constructs derived from these operators are the following: $\phi_1 \wedge \phi_2 \coloneqq \neg(\neg \phi_1 \vee \neg \phi_2)$, $\phi_1 \Rightarrow \phi_2 \coloneqq \neg \phi_1 \vee \phi_2$, $\phi_1 \Leftrightarrow \phi_2 \coloneqq \phi_1 \Rightarrow \phi_2 \wedge \phi_2 \Rightarrow \phi_1$, $\top \coloneqq \phi \wedge \neg \phi$, $\bot \coloneqq \neg \top$, $\lozenge \phi \coloneqq \top \mathcal{U} \phi$, and $\square \phi \coloneqq \neg \lozenge\neg \phi$.
 %
 
+The set of $\omega$-regular words that satisfy a formula $\phi$ forms an $\omega$-regular language denoted $\mathcal{L}(\phi)$.
+%
+When monitoring a system in real time, only finite prefixes of infinite execution traces of the system are available from the finite operating time of the system so. 
+%
+However, it cannot be determined if an $\omega$-word will or will satisfy a particular formula from a finite prefix of the word. 
+%
+An $\omega$-word containing a particular finite prefix fail to satisfy a formula, then that prefix is called a \emph{bad prefix}. 
+%
+Analogously, there is a notion of \emph{good prefix}.
+%
+These concepts are useful when properties of a system are being monitored and only a finite sequence of observed   
+
 \subsection{Buchi Automata and Runtime Monitors}
+A Buchi Automaton is a nondeterministic state machine consisting of a set of states $Q$, a 
 
-
-The set of $\omega$-regular words that satisfy a formula $\phi$ forms an $\omega$-regular language, and each $\omega$-regular language can be represented as a Buchi automaton that accepts words satisfying $\phi$ and rejects them otherwise.
+, and each $\omega$-regular language can be represented as a Buchi automaton that accepts words satisfying $\phi$ and rejects them otherwise.
 %
 
 
@@ -203,6 +215,35 @@ The set of $\omega$-regular words that satisfy a formula $\phi$ forms an $\omega
 \subsection{Synchronous Product with Runtime-monitors}
 \section{\label{sec:Approach}Real-time Labeling of Transition Systems}
 \subsection{Partitioning the Workspace}
+Subsets associated to particular predicates in the workspace must be approximated by some finite representation. 
+%
+The approach taken in this work is to partition  
+The workspace is restricted to rectangular regions in $[l_1,u_1]\times ... \times [l_k,u_k]\subset \mathbb{R}^k$.
+%
+This region is partitioned into a grid of rectangular ells and these cells are indexed with integer values using a $k$-dimensional z-order curve.
+%
+Algorithm \ref{alg:zcurve} illustrates how an index is computed for a particular point in the workspace by descending a workspace partitioning binary tree to determine the index of a point. 
+%
+Each level of the binary tree represents a contribution of a power of two to the index. 
+%
+If the point is on the high side of a space partitioning hyperplane at depth $d$, then $2^d$ is added to the index.  
+%
+While Algorithm \ref{alg:zcurve} provides the intuition for the z-curve indexing, in practice it is more efficient to index points by interleaving the binary representations of the floating point numbers . 
+
+Subsets of the workspace are then approximated by an occupancy map of the partitioned space and stored as a sorted list of integers determined by the z-order curve.
+%
+Subsets of the workspace can then b
+
+\begin{algorithm} 
+	\begin{algorithmic}[1]
+		\State $z_i \gets (x_i-l_i)/(u_i-l_i),\qquad \forall i\in\{0,...,k-1\}$ 
+		\State $j\gets 0$ 
+		\State $\varepsilon \gets 0.5$
+		\For {$i=1,\dots, d$}
+		\EndFor
+	\end{algorithmic} \caption{\label{alg:zcurve} Input: $x\in \mathbb{R}^k$, and $[l_1,u_1]\times ... \times [l_k,u_k]\subset \mathbb{R}^k$. Output: $n\in \mathbb{N}$ } 
+\end{algorithm}
+
 \subsection{Indexing the partition}
 \subsection{GPU kernels for binary matrix vector multiplication}
 
